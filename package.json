@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "server": "json-server --watch data.json --port 3006"
   },
   "dependencies": {
     "next": "10.2.3",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.11",
+    "@types/react-beautiful-dnd": "^13.0.0",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.2",
     "tailwindcss": "^2.1.4",
