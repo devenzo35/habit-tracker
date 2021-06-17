@@ -2,15 +2,7 @@ import HabitCard from "./HabitCard";
 import { Droppable } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 
-const HabitsContainer = () => {
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3006/notes")
-      .then((res) => res.json())
-      .then((json) => setNotes(json));
-  }, []);
-
+const HabitsContainer = ({ notes }) => {
   return (
     <Droppable droppableId={"1"}>
       {(provided) => (
