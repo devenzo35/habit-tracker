@@ -1,15 +1,24 @@
 import { Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
+import { FC, useContext, useState } from "react";
 import classNames from "classnames";
+import { habitsContext } from "../pages/_app";
 
-const HabitCard = ({ id, name, done, index }) => {
+interface Props {
+  name: string;
+  id: number;
+  done: boolean;
+  index: number;
+}
+
+const HabitCard: FC<Props> = ({ id, name, done, index }) => {
   const [isDone, setIsDone] = useState(done);
+
+  const { setCompletedHabits } = useContext(habitsContext);
 
   const handleDone = () => {
     setIsDone(!isDone);
+    setCompletedHabits((state) => [...state, { id, name, done: true, index }]);
   };
-
-  console.log(isDone);
 
   const taskClasses = classNames({
     "bg-gray-600": !isDone,
