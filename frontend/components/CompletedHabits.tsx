@@ -1,6 +1,4 @@
-import React from "react";
-
-export const HabitsTracker = () => {
+const CompletedHabits = () => {
   return (
     <div className="bg-gray-800 rounded-md border border-gray-700 w-5/12 h-3/6 p-5">
       <figure>
@@ -16,3 +14,5 @@ export const HabitsTracker = () => {
     </div>
   );
 };
+
+export default CompletedHabits;

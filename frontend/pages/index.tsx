@@ -3,9 +3,9 @@ import Image from "next/image";
 import React from "react";
 import styles from "../styles/Home.module.css";
 import HabitsContainer from "../components/HabitsContainer";
-import HabitsTracker from "../components/HabitsTracker";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
+import CompletedHabits from "../components/CompletedHabits";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
@@ -47,7 +47,7 @@ export default function Home() {
       <DragDropContext onDragEnd={onDragEnd}>
         <HabitsContainer notes={notes} />
       </DragDropContext>
-      <HabitsTracker />
+      <CompletedHabits />
     </div>
   );
 }
