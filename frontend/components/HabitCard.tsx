@@ -17,7 +17,7 @@ const HabitCard: FC<Props> = ({ id, name, done, index }) => {
 
   const handleDone = () => {
     setHabits((state) => ({
-      pending: state.pending,
+      pending: state.pending.filter((pendingTask) => pendingTask.id !== id),
       completed: [...state.completed, { id, name, done: true, index }],
     }));
     setIsDone(!isDone);

@@ -10,7 +10,7 @@ export const CompletedHabit = ({ name, done, id }) => {
   const handleDone = () => {
     setHabits((state) => ({
       pending: [...state.pending, { id, name, done: true }],
-      completed: state.completed,
+      completed: state.completed.filter((complete) => complete.id !== id),
     }));
 
     setIsDone(!isDone);
