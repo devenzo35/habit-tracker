@@ -13,11 +13,14 @@ interface Props {
 const HabitCard: FC<Props> = ({ id, name, done, index }) => {
   const [isDone, setIsDone] = useState(done);
 
-  const { setCompletedHabits } = useContext(habitsContext);
+  const { setHabits } = useContext(habitsContext);
 
   const handleDone = () => {
+    setHabits((state) => ({
+      pending: state.pending,
+      completed: [...state.completed, { id, name, done: true, index }],
+    }));
     setIsDone(!isDone);
-    setCompletedHabits((state) => [...state, { id, name, done: true, index }]);
   };
 
   const taskClasses = classNames({

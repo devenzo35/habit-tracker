@@ -1,8 +1,13 @@
 import HabitCard from "./HabitCard";
 import { Droppable } from "react-beautiful-dnd";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { habitsContext } from "../pages/_app";
 
 const HabitsContainer = ({ notes }) => {
+  const {
+    habits: { pending },
+  } = useContext(habitsContext);
+
   return (
     <Droppable droppableId={"1"}>
       {(provided) => (
@@ -11,7 +16,7 @@ const HabitsContainer = ({ notes }) => {
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          {notes.map((note, index) => {
+          {pending.map((note, index) => {
             return <HabitCard key={note.id} {...note} index={index} />;
           })}
           {provided.placeholder}

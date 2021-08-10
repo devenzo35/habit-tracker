@@ -4,16 +4,20 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import HabitsContainer from "../components/HabitsContainer";
 import { DragDropContext } from "react-beautiful-dnd";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CompletedHabits from "../components/CompletedHabits";
+import { habitsContext } from "./_app";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
+  const { setHabits } = useContext(habitsContext);
 
   useEffect(() => {
     fetch("http://localhost:1337/tasks")
       .then((res) => res.json())
-      .then((json) => setNotes(json));
+      .then((json) =>
+        setHabits((state) => ({ pending: json, completed: state.completed }))
+      );
   }, []);
 
   const onDragEnd = (result) => {
